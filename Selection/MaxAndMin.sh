@@ -4,16 +4,16 @@ min=32768
 i=0;
 while (( i<5 ))
 do
-	num=$(( RANDOM%1000  ))
-	num2=$num
-if [ $num -gt $max ]
-then
+   num=$(( RANDOM%1000  ))
+   num2=$num
+   if [ $num -gt $max ]
+   then
 	max=$num
-fi
-if [ $num2 -lt $min ]
-then
+  fi
+  if [ $num2 -lt $min ]
+  then
 	min=$num2
-fi
+  fi
 	(( i++ ))
 done
 echo "$max $min"
