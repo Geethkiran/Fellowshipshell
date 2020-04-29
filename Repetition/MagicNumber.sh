@@ -1,26 +1,23 @@
 #!/bin/bash -x
-echo "choose a number between 1 to 100"
-read number
 first=1
 last=100
-while (($first<=$last))
+while (( $first < $last ))
 do
-	sum=$(($first+$last))
-	middle=$(($sum/2))
-
-	if (($number==$middle))
+	mid=$((($first+$last)/2))
+echo $mid
+	echo "your guessing number is $mid :--- " $mid
+	read -p "if $mid is your guessing number enter 1 else 0 :--- " isGuessing
+	if [ $isGuessing == 0 ]
 	then
-		echo "the number u choose is $middle"
-	break
-	elif (($number>$middle))
-	then
-		first=$(($middle+1))
-	else (($number<$middle))
-		last=$(($middle-1))
+		read -p "if $mid is higher than your guessing number enter 1 else 0 :--- " isChange
+		if [ $isChange == 1 ]
+		then
+			first=$mid+1
+		else
+			last=$mid-1
+		fi
+	else
+		echo " your guessing number is :-- $mid  "
+		break;
 	fi
 done
-
-if (($first>$last))
-then
-	echo "The number u choose is not in the range"
-fi
